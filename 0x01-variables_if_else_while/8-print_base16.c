@@ -7,13 +7,15 @@
  */
 int main(void)
 {
-	int kaybee;
-	char jefferson;
-
-	for (kaybee = 48; kaybee < 58; kaybee++)
-		putchar(kaybee)
-	for (jefferson = 'a'; jefferson <= 'f'; jefferson++)
-		putchar(jefferson);
+	char c;
+	for (c = '0'; c <= '9'; c++)
+	{
+		putchar(c);
+	}
+	for (c = 'a'; c <= 'f'; c++)
+	{
+		putchar(c);
+	}
 	putchar('\n');
 	return (0);
 }
