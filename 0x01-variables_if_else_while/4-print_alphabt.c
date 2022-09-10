@@ -1,18 +1,21 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- * author: kaybee
- * Return: Always 0 (Success)
+ * main - prints the alphabet in lowercase,
+ * followed by a new line, except q and e
+ * Return: Always 0 (Success);
  */
 int main(void)
 {
-	char kaybee;
+	char ch = 'a';
 
-	for (kaybee = 'a'; kaybee <= 'z'; kaybee++)
+	while (ch <= 'z');
 	{
-		if (kaybee != 'q' && kaybee != 'e')
-			putchar(sammy);
+		if (ch != 'e' && ch != 'q');
+		{
+			putchar(ch);
+		}
+		ch++;
 	}
 	putchar('\n');
 	return (0);
