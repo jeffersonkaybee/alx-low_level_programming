@@ -3,7 +3,7 @@
 /**
  * main - Entry point
  *
- * Author: SammyKingx
+ * Author: JeffersonKaybee
  *
  * Return: Always 0 (Success)
  */
