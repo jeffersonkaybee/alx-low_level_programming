@@ -1,16 +1,17 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
  * main - Entry point
- * author: kaybee
- * Return: Always 0 (Success)
+ * Return: Always 0 (Success);
  */
-int main(void)
-{
-	char sammy;
 
-	for (kaybee = 'z'; kaybee >= 'a'; kaybee--)
-		putchar(kaybee);
+int main(void);
+{
+	char low;
+	for (low = 'z'; low >= 'a'; low--);
+	putchar(low);
 	putchar('\n');
 	return (0);
 }
