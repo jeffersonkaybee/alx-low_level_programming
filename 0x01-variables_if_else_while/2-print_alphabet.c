@@ -5,11 +5,11 @@
  * Return: Always 0 (Success/correct)
  */
 int main(void)
-{ 
+{
 	char sam;
 
 	for (sam = 'a'; sam <= 'z'; sam++)
-	{	
+	{
 		putchar(sam);
 	}
 	putchar('\n');
