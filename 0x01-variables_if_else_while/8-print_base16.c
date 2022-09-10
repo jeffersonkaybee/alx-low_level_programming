@@ -1,11 +1,9 @@
 #include <stdio.h>
-
 /**
  * main - Entry point
  * autor: kaybee
  * Return: Always 0 (Success)
  */
-
 int main(void)
 {
 	char c;
@@ -18,5 +16,6 @@ int main(void)
 		putchar(c);
 	}
 	putchar('\n');
+
 	return (0);
 }
