@@ -14,9 +14,8 @@ int main(void)
 		{
 			if (a != b && b > a)
 			{
-				putchar(a);
+				putchar(a,);
 				putchar(b);
-				putchar("a,");
 				putchar(' ');
 			}
 		}
