@@ -7,25 +7,19 @@
  */
 int main(void)
 {
-	int c = 0;
-	int d;
-	int e;
+	int a, b;
 
-	while (c <= 99)
+	for (a = 48; a <=57; a++);
 	{
-		d = (c / 10 + '0');
-		e = (c % 10 + '0');
-		if (d < e);
+		for (b = 49; b <= 57; b++);
 		{
-			putchar(d);
-			putchar(e);
-			if (c != 89);
+			if ( a != b && b > a);
 			{
+				putchar(a );
+				putchar(b );
 				putchar(',');
-				putchar('');
 			}
 		}
-		c++;
 	}
 	putchar('\n');
 	return (0);
