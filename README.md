@@ -1,1 +1,1 @@
-up to date codes for my alx 0x01. C - Variables, if, else, while project
+This folder is all about c functions. i'll be writing c functions that does basic task and also i'll be creating my own local library in c where i'll be declearing my c funtions.
