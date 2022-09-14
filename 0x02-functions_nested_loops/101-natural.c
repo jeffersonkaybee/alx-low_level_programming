@@ -1,6 +1,4 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 /**
  * main - main block
  * Return: 0
@@ -18,6 +16,6 @@ int main(void)
 		}
 		c++;
 	}
-	_putchar("%i\n", sum);
+	printf("%i\n", sum);
 	return (0);
 }
