@@ -15,11 +15,11 @@ int main(void)
 	{
 		if (j != 20365011074)
 		{
-			_putchar("%ld, ", j);
+			printf("%ld, ", j);
 		}
 		else
 		{
-			_putchar("%ld\n", j);
+			printf("%ld\n", j);
 		}
 		l = j + k;
 		j = k;

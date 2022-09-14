@@ -22,7 +22,6 @@ int main(void)
 		j = k;
 		k = l;
 	}
-	_putchar("%lu\n", m);
-
-return (0);
+	printf("%lu\n", m);
+	return (0);
 }
