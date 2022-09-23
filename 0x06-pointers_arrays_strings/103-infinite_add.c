@@ -1,59 +1,86 @@
+/*
+ * File: 102-infinite_add.c
+ * Auth: Brennan D Baraban
+ */
+
 #include "main.h"
-#include <stdio.h>
+
+char *add_strings(char *n1, char *n2, char *r, int r_index);
+char *infinite_add(char *n1, char *n2, char *r, int size_r);
 
 /**
- * print_line - prints a s bytes of a buffer
- * @c: buffer to print
- * @s: bytes of buffer to print
- * @l: line of buffer to print
- * Return: void
+ * add_strings - Adds the numbers stored in two strings.
+ * @n1: The string containing the first number to be added.
+ * @n2: The string containing the second number to be added.
+ * @r: The buffer to store the result.
+ * @r_index: The current index of the buffer.
+ *
+ * Return: If r can store the sum - a pointer to the result.
+ *         If r cannot store the sum - 0.
  */
-
-void print_line(char *c, int s, int l)
+char *add_strings(char *n1, char *n2, char *r, int r_index)
 {
-	int j, k;
+	int num, tens = 0;
 
-	for (j = 0; j <= 9; j++)
+	for (; *n1 && *n2; n1--, n2--, r_index--)
 	{
-		if (j <= s)
-			printf("%02x", c[l * 10 + j]);
-		else
-			printf("  ");
-		if (j % 2)
-			putchar(' ');
+		num = (*n1 - '0') + (*n2 - '0');
+		num += tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
-	for (k = 0; k <= s; k++)
+
+	for (; *n1; n1--, r_index--)
 	{
-		if (c[l * 10 + k] > 31 && c[l * 10 + k] < 127)
-			putchar(c[l * 10 + k]);
-		else
-			putchar('.');
+		num = (*n1 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
 	}
+
+	for (; *n2; n2--, r_index--)
+	{
+		num = (*n2 - '0') + tens;
+		*(r + r_index) = (num % 10) + '0';
+		tens = num / 10;
+	}
+
+	if (tens && r_index >= 0)
+	{
+		*(r + r_index) = (tens % 10) + '0';
+		return (r + r_index);
+	}
+
+	else if (tens && r_index < 0)
+		return (0);
+
+	return (r + r_index + 1);
 }
-
 /**
- * print_buffer - prints a buffer
- * @b: buffer to print
- * @size: size of buffer
- * Return: void
+ * infinite_add - Adds two numbers.
+ * @n1: The first number to be added.
+ * @n2: The second number to be added.
+ * @r: The buffer to store the result.
+ * @size_r: The buffer size.
+ *
+ * Return: If r can store the sum - a pointer to the result.
+ *         If r cannot store the sum - 0.
  */
-void print_buffer(char *b, int size)
+char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i;
+	int index, n1_len = 0, n2_len = 0;
 
-	for (i = 0; i <= (size - 1) / 10 && size; i++)
-	{
-		printf("%08x: ", i * 10);
-		if (i < size / 10)
-		{
-			print_line(b, 9, i);
-		}
-		else
-		{
-			print_line(b, size % 10 - 1, i);
-		}
-		putchar('\n');
-	}
-	if (size == 0)
-		putchar('\n');
+	for (index = 0; *(n1 + index); index++)
+		n1_len++;
+
+	for (index = 0; *(n2 + index); index++)
+		n2_len++;
+
+	if (size_r <= n1_len + 1 || size_r <= n2_len + 1)
+		return (0);
+
+	n1 += n1_len - 1;
+	n2 += n2_len - 1;
+	*(r + size_r) = '\0';
+
+	return (add_strings(n1, n2, r, --size_r));
 }
