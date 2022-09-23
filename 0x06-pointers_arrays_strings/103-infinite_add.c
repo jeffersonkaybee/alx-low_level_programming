@@ -1,77 +1,59 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
- * rev_string - reverse array
- * @n: integer params
- * Return: 0
+ * print_line - prints a s bytes of a buffer
+ * @c: buffer to print
+ * @s: bytes of buffer to print
+ * @l: line of buffer to print
+ * Return: void
  */
-void rev_string(char *n)
+
+void print_line(char *c, int s, int l)
 {
-	int i = 0;
-	int j = 0;
-	char temp;
+	int j, k;
 
-	while (*(n + i) != '\0')
+	for (j = 0; j <= 9; j++)
 	{
-		i++;
+		if (j <= s)
+			printf("%02x", c[l * 10 + j]);
+		else
+			printf("  ");
+		if (j % 2)
+			putchar(' ');
 	}
-	i--;
-
-	for (j = 0; j < i; j++, i--)
+	for (k = 0; k <= s; k++)
 	{
-		temp = *(n + j);
-		*(n + j) = *(n + i);
-		*(n + i) = temp;
+		if (c[l * 10 + k] > 31 && c[l * 10 + k] < 127)
+			putchar(c[l * 10 + k]);
+		else
+			putchar('.');
 	}
 }
 
 /**
- * infinite_add - add 2 numbers together
- * @n1: text representation of 1st number to add
- * @n2: text representation of 2nd number to add
- * @r: pointer to buffer
- * @size_r: buffer size
- * Return: pointer to calling function
+ * print_buffer - prints a buffer
+ * @b: buffer to print
+ * @size: size of buffer
+ * Return: void
  */
-
-char *infinite_add(char *n1, char *n2, char *r, int size_r)
+void print_buffer(char *b, int size)
 {
-	int overflow = 0, i = 0, j = 0, digits = 0;
-	int val1 = 0, val2 = 0, temp_tot = 0;
+	int i;
 
-	while (*(n1 + i) != '\0')
-		i++;
-	while (*(n2 + j) != '\0')
-		j++;
-	i--;
-	j--;
-	if (j >= size_r || i >= size_r)
-		return (0);
-	while (j >= 0 || i >= 0 || overflow == 1)
+	for (i = 0; i <= (size - 1) / 10 && size; i++)
 	{
-		if (i < 0)
-			val1 = 0;
+		printf("%08x: ", i * 10);
+		if (i < size / 10)
+		{
+			print_line(b, 9, i);
+		}
 		else
-			val1 = *(n1 + i) - '0';
-		if (j < 0)
-			val2 = 0;
-		else
-			val2 = *(n2 + j) - '0';
-		temp_tot = val1 + val2 + overflow;
-		if (temp_tot >= 10)
-			overflow = 1;
-		else
-			overflow = 0;
-		if (digits >= (size_r - 1))
-			return (0);
-		*(r + digits) = (temp_tot % 10) + '0';
-		digits++;
-		j--;
-		i--;
+		{
+			print_line(b, size % 10 - 1, i);
+		}
+		putchar('\n');
 	}
-	if (digits == size_r)
-		return (0);
-	*(r + digits) = '\0';
-	rev_string(r);
-	return (r);
+	if (size == 0)
+		putchar('\n');
 }
